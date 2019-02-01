@@ -27,6 +27,20 @@ apps:
 
 parts:
   desktop-qt5:
+  
+  otherdeps:
+    plugin: nil
+    override-build: |
+      sudo dpkg --add-architecture i386
+      sudo add-apt-repository -y ppa:kxstudio-debian/libs -y
+      sudo add-apt-repository -y ppa:kxstudio-debian/apps -y
+      sudo apt update
+      sudo apt upgrade -yy
+      sudo apt install -y carla-git
+      sudo apt install -y gcc-multilib g++-multilib libqt5x11extras5-dev qtbase5-private-dev libxcb-util0-dev libxcb-keysyms1-dev
+      sudo apt install -y wine-dev
+    build-packages:
+      - software-properties-common
 
   lmms:
     plugin: cmake
@@ -67,3 +81,5 @@ parts:
       - libqt5x11extras5-dev 
       - libxcb-keysyms1-dev 
       - libxcb-util0-dev
+      - libsoundio-dev
+    after: [otherdeps]
