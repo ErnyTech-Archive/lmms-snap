@@ -6,6 +6,9 @@ icon: snap/gui/lmms.png
 version: &lmmsversion v1.2.0-rc7
 confinement: devmode
 grade: stable
+architectures:
+  - build-on: amd64
+  - build-on: i386
 
 apps:
   lmms:
@@ -47,6 +50,8 @@ parts:
       - libsdl-dev 
       - libstk0-dev 
       - stk 
+      - fluid
+      - libfltk1.3-dev
       - libfluidsynth-dev 
       - portaudio19-dev
       - libfltk1.3-dev 
