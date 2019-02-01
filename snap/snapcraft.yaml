@@ -51,7 +51,6 @@ parts:
       - libstk0-dev 
       - stk 
       - fluid
-      - libfltk1.3-dev
       - libfluidsynth-dev 
       - portaudio19-dev
       - libfltk1.3-dev 
