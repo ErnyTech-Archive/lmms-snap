@@ -1,0 +1,65 @@
+name: lmms
+summary: "LMMS"
+description: |
+  Cross-platform music production software
+icon: snap/gui/lmms.png
+version: &lmmsversion v1.2.0-rc7
+confinement: devmode
+grade: stable
+
+apps:
+  lmms:
+    command: bin/desktop-launch $SNAP/usr/bin/lmms
+    desktop: share/applications/lmms.desktop
+    plugs:
+      - desktop
+      - desktop-legacy
+      - x11
+      - unity7
+      - wayland
+      - home
+    environment:
+      QT_X11_NO_NATIVE_MENUBAR: 1
+      QT_AUTO_SCREEN_SCALE_FACTOR: 1
+
+parts:
+  desktop-qt5:
+
+  lmms:
+    plugin: cmake
+    source-type: git
+    source: https://github.com/LMMS/lmms.git
+    source-tag: *lmmsversion
+    configflags: 
+      - -DCMAKE_INSTALL_PREFIX=$SNAPCRAFT_PART_INSTALL/usr
+      - -DWANT_QT5=ON
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DFORCE_VERSION=LMMS *lmmsversion (Snapcraft Edition - ErnyTech)
+    build-packages:
+      - libsndfile1-dev
+      - libfftw3-dev
+      - libvorbis-dev 
+      - libogg-dev 
+      - libmp3lame-dev 
+      - libasound2-dev 
+      - libjack-jackd2-dev
+      - libsamplerate0-dev 
+      - libsdl-dev 
+      - libstk0-dev 
+      - stk 
+      - libfluidsynth-dev 
+      - portaudio19-dev
+      - libfltk1.3-dev 
+      - libxinerama-dev 
+      - libxft-dev 
+      - libgig-dev 
+      - perl 
+      - libxml2-utils
+      - libxml-perl 
+      - liblist-moreutils-perl 
+      - qtbase5-dev 
+      - qttools5-dev-tools 
+      - qttools5-dev
+      - libqt5x11extras5-dev 
+      - libxcb-keysyms1-dev 
+      - libxcb-util0-dev
